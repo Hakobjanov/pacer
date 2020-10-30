@@ -30,3 +30,37 @@
   left: 25px;
   background-color: salmon;
 }
+
+.glass {
+  /* display: none; */
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: glassOpacity 1s forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quest-modal {
+  background: pink;
+  padding: 100px;
+  animation: modalScale 1s forwards;
+  z-index: 10;
+}
+
+@keyframes glassOpacity {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes modalScale {
+  from {
+    transform: scale(0);
+  }
+}
