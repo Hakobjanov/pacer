@@ -6,6 +6,22 @@
   box-sizing: border-box;
 }
 
+body {
+  max-width: 100%;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+li:hover > [hidden] {
+  display: unset !important;
+}
+
+button {
+  cursor: pointer;
+}
+
 .container {
   max-width: 1200px;
   width: 100%;
@@ -21,6 +37,16 @@
   margin-top: 100px;
 }
 
+.list-item {
+  display: flex;
+  height: 50px;
+  line-height: 50px;
+}
+
+.list-item p {
+  margin: 0 5px;
+}
+
 .confidence {
   border: 1px solid #000;
   padding: 25px;
@@ -32,7 +58,6 @@
 }
 
 .glass {
-  /* display: none; */
   position: fixed;
   left: 0;
   top: 0;
@@ -40,22 +65,57 @@
   bottom: 0;
   z-index: 5;
   background-color: rgba(0, 0, 0, 0.8);
-  animation: glassOpacity 1s forwards;
+  animation: glassOpacity 0.5s forwards;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.quest-modal {
-  background: pink;
+.glass::backdrop {
+  background: rgba(0, 0, 0, 0.61);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  position: relative;
+  background-color: var(--background-alt);
+  border-radius: 4px;
   padding: 100px;
   animation: modalScale 1s forwards;
   z-index: 10;
 }
 
+.modal header {
+  background: var(--background);
+  margin-bottom: 25px;
+  padding: 0 100px;
+  width: 100%;
+}
+
+.difficulty-range,
+.duration-range {
+  display: flex;
+  align-items: center;
+}
+
+.add-activity-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  cursor: pointer;
+}
+
 @keyframes glassOpacity {
   from {
-    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
   }
 }
 
@@ -63,4 +123,8 @@
   from {
     transform: scale(0);
   }
+}
+
+.open {
+  display: block;
 }
