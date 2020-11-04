@@ -15,39 +15,7 @@
       <div class="lists-wrapper">
         <h2>These are your activities</h2>
         <ul class="list">
-          <li class="list-item">
-            <p class="activity-name">swimming</p>
-            <p class="activity-measure">swimming</p>
-            <p class="activity-difficulty">swimming</p>
-
-            <button hidden class="take-quest-btn">take quest</button>
-            <button hidden class="edit-activity-btn">Edit</button>
-            <button hidden class="delete-activity-btn">Delete</button>
-          </li>
-          <li class="list-item">
-            runnnig
-            <button hidden class="take-quest-btn">take quest</button>
-            <button hidden class="edit-activity-btn">Edit</button>
-            <button hidden class="delete-activity-btn">Delete</button>
-          </li>
-          <li class="list-item">
-            jumping
-            <button hidden class="take-quest-btn">take quest</button>
-            <button hidden class="edit-activity-btn">Edit</button>
-            <button hidden class="delete-activity-btn">Delete</button>
-          </li>
-          <li class="list-item">
-            reading
-            <button hidden class="take-quest-btn">take quest</button>
-            <button hidden class="edit-activity-btn">Edit</button>
-            <button hidden class="delete-activity-btn">Delete</button>
-          </li>
-          <li class="list-item">
-            coding
-            <button hidden class="take-quest-btn">take quest</button>
-            <button hidden class="edit-activity-btn">Edit</button>
-            <button hidden class="delete-activity-btn">Delete</button>
-          </li>
+          <!-- Activity list here -->
         </ul>
       </div>
       <div class="form-wrapper">
@@ -62,62 +30,64 @@
       </div>
     </div>
 
-    <div class="glass" id="add-modal-glass" hidden>
-      <div class="modal add-modal">
-        <header>Add Activity</header>
-        <form class="add-activity-form">
-          <label>
-            Name your acivity
-            <input type="text" name="activityName" required />
-          </label>
-          <label>
-            Measure your acivity
-            <input type="text" name="activityMeasure" required />
-          </label>
-          <label class="difficulty-range">
-            1<input
-              type="range"
-              id="difficulty"
-              name="activityDifficulty"
-              min="0"
-              max="10"
-            />10
-          </label>
-          <button class="save-activity-btn">Save activity</button>
-        </form>
-        <button class="close-modal-btn">Close</button>
+    <div class="glass-holder">
+      <div class="glass" id="add-modal-glass" hidden>
+        <div class="modal add-modal">
+          <header>Add Activity</header>
+          <form class="add-activity-form">
+            <label>
+              Name your acivity
+              <input type="text" name="name" required />
+            </label>
+            <label>
+              Measure your acivity
+              <input type="text" name="measure" required />
+            </label>
+            <label class="difficulty-range">
+              1<input
+                type="range"
+                id="difficulty"
+                name="diff"
+                min="0"
+                max="10"
+              />10
+            </label>
+            <button class="save-activity-btn">Save activity</button>
+          </form>
+          <button class="close-modal-btn">Close</button>
+        </div>
       </div>
-    </div>
-
-    <div class="glass" hidden id="quest-modal-glass">
-      <div class="modal quest-modal">
-        <header>Activity info</header>
-        <form class="quest-form">
-          <label class="duration-range">
-            1<input
-              type="range"
-              id="quest-duration"
-              name="quest-duration"
-              min="0"
-              max="10"
-            />10
-          </label>
-          <div class="quest-price-calc">2 * 9 = 18</div>
-          <div>
-            <label
-              >Today<input name="start day" value="0" type="radio"
-            /></label>
-            <label
-              >Tomorrow<input name="start day" value="1" type="radio"
-            /></label>
-            <label
-              >Day after next<input name="start day" value="2" type="radio"
-            /></label>
-          </div>
-          <div class="calendar">The day is today!</div>
-          <button class="take-quest-btn">Take this quest!</button>
-        </form>
-        <button class="close-modal-btn">Close</button>
+  
+      <div class="glass" hidden id="quest-modal-glass">
+        <div class="modal quest-modal">
+          <header>Activity info</header>
+          <form class="quest-form">
+            <label class="duration-range">
+              1<input
+                type="range"
+                id="quest-duration"
+                name="quest-duration"
+                min="0"
+                max="10"
+              />10
+            </label>
+            <div class="quest-price-calc">2 * 9 = 18</div>
+            <div>
+              <label
+                >Today<input name="start day" value="0" type="radio"
+              /></label>
+              <label
+                >Tomorrow<input name="start day" value="1" type="radio"
+              /></label>
+              <label
+                >Day after next<input name="start day" value="2" type="radio"
+              /></label>
+            </div>
+            <div class="calendar">The day is today!</div>
+            <button class="take-quest-btn">Take this quest!</button>
+          </form>
+          <button class="close-modal-btn">Close</button>
+        </div>
       </div>
     </div>
 

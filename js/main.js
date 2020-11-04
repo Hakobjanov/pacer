@@ -1,6 +1,7 @@
 const addActivityBtn = document.querySelector(".add-activity-btn");
 const newQuestBtn = document.querySelector(".new-quest-btn");
 const addActivityGlass = document.querySelector("#add-modal-glass");
+const glassHolder = document.querySelector(".glass-holder");
 const glasses = document.querySelectorAll(".glass");
 const glass = document.querySelector(".glass");
 const questGlass = document.querySelector("#quest-modal-glass");
@@ -36,7 +37,29 @@ closeModalBtns.forEach((btn) => {
 });
 
 //adding new activity
-const activities = [];
+let id = 0;
+const activities = [
+  {
+    id: ++id,
+    name: "swimming",
+    measure: "1 hour",
+    diff: 7,
+  },
+  {
+    id: ++id,
+    name: "running",
+    measure: "1 hour",
+    diff: 5,
+  },
+  {
+    id: ++id,
+    name: "english",
+    measure: "3 hour",
+    diff: 8,
+  },
+];
+
+showActivities();
 
 addActivityForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -44,20 +67,27 @@ addActivityForm.addEventListener("submit", (e) => {
   const inputValues = Object.fromEntries([
     ...new FormData(addActivityForm).entries(),
   ]);
-  activities.push(inputValues);
+
+  activities.push({ id: ++id, ...inputValues });
 
   showActivities();
   glass.hidden = true;
 });
 
+activityList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete-activity-btn")) {
+    deleteActivity(e.target.parentElement.dataset.id);
+  }
+});
+
 function showActivities() {
   activityList.innerHTML = activities
-    .map(({ activityName, activityMeasure, activityDifficulty }) => {
+    .map(({ id, name, measure, diff }) => {
       return `
-      <li class="list-item">
-        <p class="activity-name">${activityName}</p>
-        <p class="activity-measure">${activityMeasure}</p>
-        <p class="activity-difficulty">${activityDifficulty}</p>
+      <li class="list-item" data-id="${id}">
+        <p class="activity-name" title="Activity name">${name}</p>
+        <p class="activity-measure"  title="Activity measure">${measure}</p>
+        <strong class="activity-difficulty"  title="Activity difficulty">${diff}</strong>
         
         <button hidden class="take-quest-btn">take quest</button>
         <button hidden class="edit-activity-btn">Edit</button>
@@ -66,4 +96,10 @@ function showActivities() {
     `;
     })
     .join("");
+}
+
+function deleteActivity(id) {
+  const index = activities.findIndex((activity) => +id === activity.id);
+  activities.splice(index, 1);
+  showActivities();
 }
